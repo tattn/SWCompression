@@ -1,0 +1,12 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/travis/build/tsolomko/SWCompression/Sources/LZMA/LZMAProperties.swift",
+      "line": 46,
+      "symbol": "LZMAProperties.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/travis/build/tsolomko/SWCompression"
+}
