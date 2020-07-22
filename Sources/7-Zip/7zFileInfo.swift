@@ -62,11 +62,10 @@ class SevenZipFileInfo {
                     let names = String(bytes: bitReader.bytes(count: propertySize - 1), encoding: .utf16LittleEndian)
                     else { throw SevenZipError.internalStructureError }
 
-                var nextFile = 0
-                for name in names.split(separator: "\u{0}") {
-                    files[nextFile].name = String(name)
-                    nextFile += 1
-                }
+                let splitedNames = names.split(separator: "\u{0}")
+                let nextFile = splitedNames.count
+                let name = nextFile > 0 ? splitedNames[nextFile - 1] : ""
+                files[nextFile].name = "\(name)"
 
                 guard nextFile == numFiles
                     else { throw SevenZipError.internalStructureError }

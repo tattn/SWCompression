@@ -104,7 +104,7 @@ public struct ZipEntryInfo: ContainerEntryInfo {
 
     init(_ byteReader: LittleEndianByteReader, _ cdEntry: ZipCentralDirectoryEntry, _ localHeader: ZipLocalHeader,
          _ hasDataDescriptor: Bool) {
-        self.name = cdEntry.fileName
+        self.name = "\(cdEntry.fileName)"
 
         // Set Modification Time.
         if let mtime = cdEntry.extendedTimestampExtraField?.mtime {
@@ -175,7 +175,7 @@ public struct ZipEntryInfo: ContainerEntryInfo {
             self.type = .regular
         }
 
-        self.comment = cdEntry.fileComment
+        self.comment = "\(cdEntry.fileComment)"
         self.isTextFile = cdEntry.internalFileAttributes & 0x1 != 0
         self.fileSystemType = FileSystemType(cdEntry.versionMadeBy)
         self.compressionMethod = CompressionMethod(localHeader.compressionMethod)
